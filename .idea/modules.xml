@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/LiveDataViewMode.iml" filepath="$PROJECT_DIR$/LiveDataViewMode.iml" />
+      <module fileurl="file://E:\Decompile\android-livedata-viewmodel\LiveDataViewMode.iml" filepath="E:\Decompile\android-livedata-viewmodel\LiveDataViewMode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/android-livedata-viewmodel.iml" filepath="$PROJECT_DIR$/.idea/android-livedata-viewmodel.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\Decompile\android-livedata-viewmodel\app\app.iml" filepath="E:\Decompile\android-livedata-viewmodel\app\app.iml" />
     </modules>
   </component>
 </project>

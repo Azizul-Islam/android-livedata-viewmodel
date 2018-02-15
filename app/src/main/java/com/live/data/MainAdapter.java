@@ -35,6 +35,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     public void addItems(List<UserEntity> userEntities){
+        if(userEntities == null) return;
         userEntityList.addAll(userEntities);
         notifyDataSetChanged();
     }

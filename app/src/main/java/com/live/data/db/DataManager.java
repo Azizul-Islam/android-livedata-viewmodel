@@ -26,11 +26,6 @@ public class DataManager {
     private DataManager(AppDatabase appDatabase){
         mDatabase = appDatabase;
         mObservableProducts = new MediatorLiveData<>();
-        /*mObservableProducts.addSource(mDatabase.getUserDao().getAllUsers(), userEntity->{
-            if (mDatabase.getDatabaseCreated().getValue() != null) {
-                mObservableProducts.postValue(userEntity);
-            }
-        });*/
     }
 
 
@@ -45,7 +40,7 @@ public class DataManager {
         }
         return dataManager;
     }
-    public LiveData<List<UserEntity>> getProducts() {
+    public LiveData<List<UserEntity>> getUsers() {
         mObservableProducts.addSource(mDatabase.getUserDao().getAllUsers(),mObservableProducts::setValue);
         return mObservableProducts;
     }

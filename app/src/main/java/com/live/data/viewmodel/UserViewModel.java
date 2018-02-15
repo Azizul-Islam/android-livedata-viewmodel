@@ -16,7 +16,9 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MediatorLiveData;
+import android.arch.lifecycle.Observer;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.live.data.App;
 import com.live.data.db.entity.UserEntity;
@@ -29,8 +31,15 @@ public class UserViewModel extends AndroidViewModel {
         super(application);
         mObservableProducts = new MediatorLiveData<>();
         //mObservableProducts.postValue(null);
-        LiveData<List<UserEntity>> products = ((App) application).getRepository().getProducts();
-        mObservableProducts.addSource(products, mObservableProducts::setValue);
+        LiveData<List<UserEntity>> products = ((App) application).getRepository().getUsers();
+        mObservableProducts.addSource(products, new Observer<List<UserEntity>>() {
+            @Override
+            public void onChanged(@Nullable List<UserEntity> userEntities) {
+                mObservableProducts.postValue(userEntities);
+            }
+        });
+
+        //mObservableProducts.postValue(products.getValue());
     }
     public LiveData<List<UserEntity>> getUsers() {
         return mObservableProducts;
