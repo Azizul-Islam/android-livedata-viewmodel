@@ -22,13 +22,9 @@ import java.util.List;
 public class DataManager {
     private static DataManager dataManager;
     private final AppDatabase mDatabase;
-    private MediatorLiveData<List<UserEntity>> mObservableProducts;
     private DataManager(AppDatabase appDatabase){
         mDatabase = appDatabase;
-        mObservableProducts = new MediatorLiveData<>();
     }
-
-
 
     public static DataManager getInstance(AppDatabase appDatabase){
         if (dataManager == null) {
@@ -41,7 +37,6 @@ public class DataManager {
         return dataManager;
     }
     public LiveData<List<UserEntity>> getUsers() {
-        mObservableProducts.addSource(mDatabase.getUserDao().getAllUsers(),mObservableProducts::setValue);
-        return mObservableProducts;
+        return mDatabase.getUserDao().getAllUsers();
     }
 }

@@ -30,16 +30,13 @@ public class UserViewModel extends AndroidViewModel {
     public UserViewModel(@NonNull Application application) {
         super(application);
         mObservableProducts = new MediatorLiveData<>();
-        //mObservableProducts.postValue(null);
-        LiveData<List<UserEntity>> products = ((App) application).getRepository().getUsers();
+        LiveData<List<UserEntity>> products = ((App) application).getDbManager().getUsers();
         mObservableProducts.addSource(products, new Observer<List<UserEntity>>() {
             @Override
             public void onChanged(@Nullable List<UserEntity> userEntities) {
                 mObservableProducts.postValue(userEntities);
             }
         });
-
-        //mObservableProducts.postValue(products.getValue());
     }
     public LiveData<List<UserEntity>> getUsers() {
         return mObservableProducts;

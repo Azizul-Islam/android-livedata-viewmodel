@@ -34,20 +34,21 @@ public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase sInstance;
     @VisibleForTesting
     public static final String DATABASE_NAME = "basic-sample-db";
-    private final MutableLiveData<Boolean> mIsDatabaseCreated = new MutableLiveData<>();
-
 
     public static AppDatabase getInstance(Context context, AppExecutors appExecutors){
         if(sInstance == null){
             synchronized (AppDatabase.class){
                 sInstance = buildDatabase(context, appExecutors);
-                sInstance.updateDatabaseCreated(context.getApplicationContext());
             }
         }
         return sInstance;
     }
 
     private static AppDatabase buildDatabase(final Context context, final AppExecutors appExecutors){
+        return Room.databaseBuilder(context, AppDatabase.class, DATABASE_NAME).build();
+    }
+
+   /* private static AppDatabase buildDatabase(final Context context, final AppExecutors appExecutors){
         return Room.databaseBuilder(context, AppDatabase.class, DATABASE_NAME).addCallback(new Callback() {
             @Override
             public void onCreate(@NonNull SupportSQLiteDatabase db) {
@@ -82,6 +83,6 @@ public abstract class AppDatabase extends RoomDatabase {
         if (context.getDatabasePath(DATABASE_NAME).exists()) {
             setDatabaseCreated();
         }
-    }
+    }*/
 
 }

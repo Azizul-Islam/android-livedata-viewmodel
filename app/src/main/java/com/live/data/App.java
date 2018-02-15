@@ -31,11 +31,11 @@ public class App extends Application {
         return AppDatabase.getInstance(context, mAppExecutors);
     }
 
-    public DataManager getRepository() {
+    public DataManager getDbManager() {
         return DataManager.getInstance(getDatabase());
     }
 
-    public static AppExecutors getmAppExecutors(){
+    public static AppExecutors getAppExecutors(){
         return mAppExecutors;
     }
 
