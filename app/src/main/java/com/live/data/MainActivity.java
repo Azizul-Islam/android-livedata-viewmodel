@@ -2,6 +2,7 @@ package com.live.data;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.live.data.db.entity.UserEntity;
+import com.live.data.tab.TabViewActivity;
 import com.live.data.viewmodel.NameViewModel;
 import com.live.data.viewmodel.UserViewModel;
 
@@ -55,6 +57,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         new Thread(() -> {
             App.getDatabase().getUserDao().insert(userEntity);
         }).start();
+    }
+
+    public void launchActivity(View view){
+        Intent intent = new Intent(this, TabViewActivity.class);
+        startActivity(intent);
     }
 
 }

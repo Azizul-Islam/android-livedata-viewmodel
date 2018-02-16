@@ -46,12 +46,17 @@
         <Button
             android:id="@+id/button_submit"
             android:layout_below="@+id/layout_name"
-            android:layout_width="200dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:text="Submit"/>
-
-
+        <Button
+            android:text="Tabview"
+            android:id="@+id/launch_activity"
+            android:layout_below="@+id/layout_name"
+            android:layout_alignParentRight="true"
+            android:layout_width="150dp"
+            android:onClick="launchActivity"
+            android:layout_height="wrap_content" />
     </RelativeLayout>
 
 
