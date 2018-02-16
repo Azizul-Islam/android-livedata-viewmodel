@@ -53,6 +53,7 @@ public class SecondFragment extends Fragment {
         userViewModel.getUsers().observe(this, new Observer<List<UserEntity>>() {
             @Override
             public void onChanged(@Nullable List<UserEntity> userEntities) {
+                mainAdapter.clear();
                 mainAdapter.addItems(userEntities);
             }
         });
